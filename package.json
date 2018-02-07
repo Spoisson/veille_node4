@@ -1,0 +1,21 @@
+{
+  "name": "veille_node4",
+  "version": "1.0.0",
+  "description": "Exercice #4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "for of",
+    "for in",
+    "route",
+    "formulaire"
+  ],
+  "author": "Samuel Poisson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
