@@ -21,7 +21,7 @@ const transforme_en_tableau = (listeJSON) => {
 
     } 
 
-    entete += '</tr><tr><th>&nbsp</th></tr>';
+    entete += '</tr>';
     donnees += '</tr>';
 
   }
