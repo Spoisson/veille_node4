@@ -49,22 +49,38 @@ app.get('/traiter_get', function (req, res) {
 
 console.log('la route /traiter_get')
 
-// on utilise l'objet req.query pour récupérer les données GET
- let reponse = {
- prenom:req.query.prenom,
- nom:req.query.nom,
- telephone:req.query.telephone,
- courriel: req.query.courriel
- };
- 
-//console.log(reponse);
-//res.end(JSON.stringify(reponse));
+let idDernierMembre = 0;
 
-let fs = require('fs');
-  fs.appendFile('public/data/membres.txt', ',' + JSON.stringify(reponse), (err) => {
-  if (err) throw err;
-     console.log('Sauvegardé');
-});
+    let fs = require('fs');
+    fs.readFile('public/data/membres.txt', 'utf8', (err, data) => {
+
+     if (err) throw err;
+     let listeMembres = JSON.parse('[' + data + ']');
+
+     idDernierMembre = listeMembres[listeMembres.length - 1].id;
+
+      // on utilise l'objet req.query pour récupérer les données GET
+     let reponse = {
+     prenom:req.query.prenom,
+     nom:req.query.nom,
+     telephone:req.query.telephone,
+     courriel: req.query.courriel,
+     id: idDernierMembre + 1
+     };
+
+     //console.log(reponse);
+    //res.end(JSON.stringify(reponse));
+
+      fs.appendFile('public/data/membres.txt', ',' + JSON.stringify(reponse), (err) => {
+        if (err) throw err;
+           console.log('Sauvegardé');
+       });
+
+      console.log(reponse);
+      res.end(JSON.stringify(reponse));
+
+  });
+
 
 /*
 let fs = require('fs');
@@ -76,12 +92,6 @@ fs.readFile('public/data/membres.txt', 'utf8', (err, data) => {
 
 });
 */
-
-
-
-
-console.log(reponse);
- res.end(JSON.stringify(reponse));
 })
 /////////////////////////////////////// Route : membres
 app.get('/membres', (req,res) => {
@@ -97,7 +107,7 @@ app.get('/membres', (req,res) => {
      if (err) throw err;
      let listeMembres = JSON.parse('[' + data + ']');
 
-     console.log(listeMembres);
+     console.log(listeMembres[listeMembres.length - 1].id);
 
      res.end(transforme_en_tableau(listeMembres));
       
