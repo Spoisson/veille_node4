@@ -40,7 +40,8 @@ app.get('/formulaire', function (req, res) {
 ////////////////////////////////////////////////// Route /
 app.get('/', (req, res) => {
  console.log('accueil')
- res.end('<h1>Accueil</h1>')
+ //res.end('<h1>Accueil</h1>')
+ res.sendFile( __dirname + "/public/html/" + "index.htm" );
 })
 ////////////////////////////////////////////////// Route /traiter_get
 app.get('/traiter_get', function (req, res) {
@@ -89,6 +90,7 @@ app.get('/membres', (req,res) => {
     console.log(res);
 
 */
+   
     let fs = require('fs');
     fs.readFile('public/data/membres.txt', 'utf8', (err, data) => {
 
@@ -103,7 +105,7 @@ app.get('/membres', (req,res) => {
 
     });
 
-
+ //res.sendFile( __dirname + "/public/html/" + "index.htm" );
 
 })
 
