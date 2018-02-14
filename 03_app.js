@@ -5,8 +5,8 @@ app.use(express.static('public'));
 const transforme_en_tableau = (listeJSON) => {
 
   let trace = '<table>';
-  let entete;
-  let donnees;
+  let donnees = '';
+  let entete = '';
 
   for (let elm of listeJSON){
 
