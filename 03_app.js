@@ -5,23 +5,28 @@ app.use(express.static('public'));
 const transforme_en_tableau = (listeJSON) => {
 
   let trace = '<table>';
+  let entete;
+  let donnees;
 
   for (let elm of listeJSON){
 
     //trace += '<tr><th>' + p + '</th>';
+    entete = '<tr>';
+    donnees += '<tr>';
 
     for (let p in elm) { 
 
-      trace += '<tr><th>' + p + '</th>';
-      trace += '<td>' + elm[p] + '</td></tr>'; 
+      entete += '<th>' + p + '</th>';
+      donnees += '<td>' + elm[p] + '</td>'; 
 
     } 
 
-      trace += '<tr><th>&nbsp</th></tr>';
+    entete += '</tr><tr><th>&nbsp</th></tr>';
+    donnees += '</tr>';
 
   }
 
-  trace += '</table>';
+  trace += entete + donnees + '</table>';
   return trace;
   //console.log(trace);
 
