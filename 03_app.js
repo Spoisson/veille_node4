@@ -81,17 +81,6 @@ let idDernierMembre = 0;
 
   });
 
-
-/*
-let fs = require('fs');
-fs.readFile('public/data/membres.txt', 'utf8', (err, data) => {
- if (err) throw err;
- //let obj = JSON.parse(data);
- console.log(JSON.parse(data));
-
-
-});
-*/
 })
 /////////////////////////////////////// Route : membres
 app.get('/membres', (req,res) => {
@@ -108,7 +97,8 @@ app.get('/membres', (req,res) => {
      let listeMembres = JSON.parse('[' + data + ']');
 
      console.log(listeMembres[listeMembres.length - 1].id);
-
+     res.writeHead(200, {"Content-Type": "text/html"});
+     res.write('<link rel="stylesheet" type="text/css" href="../public/css/normalize.css"><link rel="stylesheet" type="text/css" href="../css/style.css">');
      res.end(transforme_en_tableau(listeMembres));
       
       //res.send(data);
