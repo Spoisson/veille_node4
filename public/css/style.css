@@ -17,10 +17,8 @@ input[type=submit]{
 
 }
 
-label {
+div {
 
-	width: 400px;
-	font-weight: bold;
-	padding-right: 50px;
+	margin-top: 10px;
 
 }
